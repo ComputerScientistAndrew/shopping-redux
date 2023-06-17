@@ -1,25 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import Products from './components/features/products/Products';
+import Cart from './components/features/cart/Cart';
+import { useSelector } from 'react-redux';
+import { getCartQuantity } from './components/features/cart/cartSlice';
 
-function App() {
+export default function App() {
+  const cartQuantity = useSelector(getCartQuantity);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <h1 className='title'>Amazona</h1>
+      <h4>Look through our assortment of items!</h4>
+      <p className='cart-count'>
+        <strong>Cart:</strong> {cartQuantity}
+      </p>
+      <Products />
+      <Cart />
     </div>
   );
 }
-
-export default App;
